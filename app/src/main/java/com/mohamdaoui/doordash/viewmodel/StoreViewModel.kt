@@ -33,6 +33,16 @@ class StoreViewModel(private var store: Store) : ViewModel() {
             return formatDistance(store.distance)
         }
 
+    val ratings: String
+        get() {
+            return store.averageRating.toString() + " ★ (" + store.numberOfRatings?.toString() + ")" // Strings would need to be in strings.xml for localizations
+        }
+
+    val deliveryFee: String
+        get() {
+            return "Delivery fee: $" + store.deliveryFee.toString()
+        }
+
     // I would probably use PublishSubject to send this event back to the fragment
     // and have it open the activity as I don't like VMs to open activities.
     fun onStoreClicked(view: View) {
@@ -42,7 +52,8 @@ class StoreViewModel(private var store: Store) : ViewModel() {
     }
 
     private fun formatDistance(distance: Number?): String {
-        return distance?.toDouble()?.round(2).toString() + " KM"
+        return distance?.toDouble()?.round(2)
+            .toString() + " KM" // Strings would need to be in strings.xml for localizations
     }
 
     private fun formatDescription(description: String): String {

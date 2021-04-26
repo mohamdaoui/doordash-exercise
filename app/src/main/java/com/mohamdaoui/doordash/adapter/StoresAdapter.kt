@@ -32,8 +32,10 @@ class StoresAdapter : RecyclerView.Adapter<StoresAdapter.StoreViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: StoreViewHolder, position: Int) {
-        val store = storeList!![position]
-        holder.storeRowItemBinding.storeVM = StoreViewModel(store)
+        storeList?.let {
+            val store = it[position]
+            holder.storeRowItemBinding.storeVM = StoreViewModel(store)
+        }
     }
 
     inner class StoreViewHolder(val storeRowItemBinding: StoreRowItemBinding) :

@@ -9,7 +9,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.mohamdaoui.doordash.databinding.StoreDetailsBinding
 import com.mohamdaoui.doordash.model.Store
-import com.mohamdaoui.doordash.ui.activity.StoreDetailsActivity
 import com.mohamdaoui.doordash.ui.activity.StoreDetailsActivity.Companion.ID
 import com.mohamdaoui.doordash.viewmodel.MainViewModel
 import com.mohamdaoui.doordash.viewmodel.StoreViewModel
@@ -42,7 +41,7 @@ class StoreDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val mainVM = ViewModelProviders.of(this).get(MainViewModel::class.java)
         val arguments = arguments ?: return
-        val id = arguments.getInt(StoreDetailsActivity.ID)
+        val id = arguments.getInt(ID)
         mainVM.getRestaurantDetails(id).observe(this,
             Observer<Store> { store ->
                 viewModel = StoreViewModel(store = store)

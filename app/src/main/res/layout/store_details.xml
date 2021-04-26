@@ -20,7 +20,7 @@
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/app_bar_height"
+            android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
             android:theme="@style/AppTheme.AppBarOverlay">
 
@@ -35,7 +35,7 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:contentDescription="@{storeVM.logoContentDescription}"
                     android:src="@mipmap/ic_launcher"
                     app:imageUrl="@{storeVM.imageUrl}">
@@ -48,13 +48,14 @@
                     android:layout_height="?attr/actionBarSize"
                     app:layout_collapseMode="pin"
                     app:popupTheme="@style/AppTheme.PopupOverlay"
-                    app:subtitle="@{storeVM.description}"
                     app:title="@{storeVM.name}" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <include layout="@layout/store_details_content" />
+        <include
+            layout="@layout/store_details_content"
+            app:storeVM="@{storeVM}" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/favourite"

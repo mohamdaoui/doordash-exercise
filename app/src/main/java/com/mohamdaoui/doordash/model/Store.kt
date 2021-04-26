@@ -10,4 +10,13 @@ class Store(var id: Int, var name: String, var description: String) {
     @SerializedName("cover_img_url")
     lateinit var coverImage: String
 
+    @SerializedName("average_rating")
+    lateinit var averageRating: Number
+
+    @SerializedName("number_of_ratings")
+    var numberOfRatings: Number? = null
+
+    @SerializedName("delivery_fee")
+    lateinit var deliveryFee: Number
+
 }

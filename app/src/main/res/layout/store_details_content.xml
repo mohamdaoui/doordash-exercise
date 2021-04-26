@@ -3,6 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="storeVM"
+            type="com.mohamdaoui.doordash.viewmodel.StoreViewModel" />
+
+    </data>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -10,10 +18,30 @@
         tools:context=".ui.activity.StoreDetailsActivity"
         tools:showIn="@layout/store_details">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <!--        In an actual app with specs, this section will most likely be a recycler view which will have to have multiple adapter and a
+                    Merger adapter to show all the different sections together, I just don't want to have too much boiler plate in this sample project -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Test" />
+            android:orientation="vertical"
+            android:padding="@dimen/default_margin">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{storeVM.description}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{storeVM.ratings}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{storeVM.deliveryFee}" />
+        </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 </layout>
