@@ -9,8 +9,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mohamdaoui.doordash.adapter.StoresAdapter
+import com.mohamdaoui.doordash.databinding.HomeBannerBinding
 import com.mohamdaoui.doordash.databinding.MainFragmentBinding
 import com.mohamdaoui.doordash.model.StoreFeedResult
+import com.mohamdaoui.doordash.viewmodel.HomeBannerVM
 import com.mohamdaoui.doordash.viewmodel.MainViewModel
 
 class MainFragment : Fragment() {
@@ -19,8 +21,10 @@ class MainFragment : Fragment() {
         fun newInstance() = MainFragment()
     }
 
+    private lateinit var homeBannerBinding: HomeBannerBinding
     private lateinit var binding: MainFragmentBinding
     private lateinit var viewModel: MainViewModel
+    private lateinit var homeBannerVM: HomeBannerVM
     private var storesAdapter: StoresAdapter? = null
 
     override fun onCreateView(
@@ -38,6 +42,9 @@ class MainFragment : Fragment() {
         storesAdapter = StoresAdapter()
         storesRecyclerView.adapter = storesAdapter
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        homeBannerVM = HomeBannerVM(activity?.applicationContext)
+        homeBannerBinding = binding.banner
+        homeBannerBinding.homeBannerVM = homeBannerVM
         viewModel.getHomeFeed().observe(this,
             Observer<StoreFeedResult> { storeFeedResult ->
                 storesAdapter?.setStoreList(storeFeedResult.stores)

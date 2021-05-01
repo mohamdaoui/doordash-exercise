@@ -10,6 +10,10 @@
         android:background="@android:color/white"
         tools:context=".ui.fragment.MainFragment">
 
+        <include
+            android:id="@+id/banner"
+            layout="@layout/home_banner" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/storesRecyclerView"
             android:layout_width="match_parent"
@@ -17,7 +21,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/banner" />
 
         <!--        <ProgressBar-->
         <!--            style="?android:attr/progressBarStyleHorizontal"-->

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Doordash exercise</string>
+    <string name="welcome_banner">Welcome to Doordash ordering!</string>
 </resources>
